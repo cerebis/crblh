@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from Bio.SeqIO.FastaIO import FastaIterator
 from Bio.Alphabet import generic_protein
 import re
@@ -172,7 +173,8 @@ for i in range(num_genomes):
             continue
         print "{0}/{1} searching {2} against {3}".format(n, num_compare, query, subject)
         subject_db = os.path.join(args.work_dir[0], os.path.basename(subject))
-        subprocess.call(['lastal', '-T', '1', '-f', '0', '-e', str(args.bitscore[0]), '-o', out_name, subject_db, query])
+        with open(out_name, 'w') as out_h:
+            subprocess.call(['lastal', '-T', '1', '-f', '0', '-e', str(args.bitscore[0]), subject_db, query], stdout=out_h)
 
 print "Finding best hits ..."
 g = nx.Graph()
@@ -226,6 +228,9 @@ for v1, v2, d in g.edges_iter(data=True):
         g.remove_edge(v1, v2)
 
 print 'Graph contained {0} nodes {1} edges after pruning.'.format(g.order(), g.size())
+
+print 'Removing self-loops ...'
+g.remove_edges_from(g.selfloop_edges())
 
 print 'Removing isolated nodes ...'
 g = nx.k_core(g, 1)
