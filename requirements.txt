@@ -1,0 +1,8 @@
+# Pip requirements file
+# This can be used to pull down the required modules for crblh
+
+biopython
+python-louvain
+networkx
+numpy
+tqdm
