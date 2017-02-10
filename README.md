@@ -94,7 +94,7 @@ In any case, the columns are:
 
 An occupancy table can easily be created from the per-genome membership files using ```occupancy.py```. One use of this table is to consider which genomes share blocks of protein clusters.
 
-##Hierarchical cluster of protein occupancy
+##Hierarchical clustering of protein occupancy
 
 The script ```heatmap.R``` is a simple tool to generate a heatmap, sorting both rows and columns using hierarchical clustering. In this case, the script expects the occupancy table generated both. The result is a heatmap, depicting strict "yes/no" occuapancy of each genome vs each protein cluster. This image is helpful in gaining a sense of the genes shared across the comparison set. This might also be regarded as a qualitative estimation of the "core" genes.
 
