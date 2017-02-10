@@ -96,7 +96,7 @@ An occupancy table can easily be created from the per-genome membership files us
 
 ##Hierarchical cluster of protein occupancy
 
-The script ```heatmap.R``` is a simple tool to generate a heatmap, sorting both rows and columns using hierarchical clustering. In this case, the script expects the occupancy table generated both. The result is a heatmap, depicting strict "yes/no" occuapancy of each genome vs each protein cluster. This image is helpful in gaining a sense of the genes shared across the comparison set. This might also be regarded as an estimation of the "core" genes.
+The script ```heatmap.R``` is a simple tool to generate a heatmap, sorting both rows and columns using hierarchical clustering. In this case, the script expects the occupancy table generated both. The result is a heatmap, depicting strict "yes/no" occuapancy of each genome vs each protein cluster. This image is helpful in gaining a sense of the genes shared across the comparison set. This might also be regarded as a qualitative estimation of the "core" genes.
 
 Required packages:
 - pheatmap
