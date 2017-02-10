@@ -16,6 +16,8 @@ Python Modules
 - biopython
 - networkx
 - python-louvain
+- scipy
+- numpy
 - tqdm 
 
 ##Installation
@@ -87,5 +89,9 @@ In any case, the columns are:
   2. fraction (%) of genes with the given annotation
   3. number of genes observed with the given annotation
   4. the annotation in question
+
+##Occupancy Table
+
+An occupancy table can easily be created from the per-genome membership files using ```occupancy.py```. One use of this table is to consider which genomes share blocks of protein clusters.
 
 
