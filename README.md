@@ -71,7 +71,13 @@ ls input_prot/*.faa | sort | xargs ./crblh.py -C work myresults
 Users can compile a set of sequences and a breakdown of sequence annotations using the tool ```cluster_breakdown.py```. By default, the tool with do this for the entire set of sequences. 
 
 ```bash
-./cluster_breakdown.py myresults.txt A.faa B.faa C.faa outdir
+./cluster_breakdown.py myresults.txt outdir A.faa B.faa C.faa 
+```
+
+For large jobs, the same method can be applied as was explained above.
+
+```bash
+ls input_prot/*.faa | sort | xargs ./cluster_breakdown.py myresults.txt outdir
 ```
 
 The result will be a directory containing 2 files for each cluster (clxx.faa, clxx.csv), containing the protein sequences belonging to the cluster and a table cataloging the various annotations given to each sequence. If the user has supplied sequences without annotation, the second file will not be of much value. If annotations were supplied, then this file is a handy means of infering function without resorting to additional searches or database lookups.
