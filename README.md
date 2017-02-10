@@ -37,14 +37,28 @@ At present, crblh has a very simple interface and can be a little tedious to sta
 ###A Basic Run
 
 A basic run, where the initial disconnected components of the graph are assumed to be the clusters. The work directory ```work``` will be created (```-C```) and this will involve the sequences for genomes A, B and C.
+
+From the crblh directory:
 ```bash
 ./crblh.py -C work myresults A.faa B.faa C.faa
 ```
 
 ###Decomposing Components
 You can elect to decompose the components from the beginning, or run crblh a second time. The LAST search results will be re-used.
+
+From the crblh directory:
 ```bash
 ./crblh.py --decomp work myresults_decomp A.faa B.faa C.faa
+```
+
+###Running Larger Jobs
+In some cases, users may wish to analyse more than a handful of genomes. In this case, the basic UI we currently provide means a little work in list all the genome sequence files. To avoid this, we suggest placing all the targets in subdirectory and using Unix pipes and xargs to build the commandline for you.
+
+Assuming I have ~20 genomes whose protein multi-fasta all end in .faa and which I have placed in the subdirectory ```input_prot```. The following will supply all protein files to crblh without the user having to explicitly type them all out. The list is sorted on input just for maintaining consistency.
+
+From the crblh directory:
+```bash
+ls input_prot/*.faa | sort | xargs ./crblh.py -C work myresults
 ```
 
 ##Output files
