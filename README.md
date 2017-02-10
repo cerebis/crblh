@@ -104,7 +104,7 @@ Required packages:
 
 Usage:
 ```bash
-./heatmap.R occupany.csv heatmap.pdf tree.pdf
+./heatmap.R occupancy.csv heatmap.pdf tree.pdf
 ```
 
 Users are encourage to use this script as an example of what can be done. Rather than producing only a figure, the results of hierarchical clustering can be interogated to, for instance, select out sets of protein clusters or genomes with particular relatedness.
