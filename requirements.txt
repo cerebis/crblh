@@ -5,4 +5,5 @@ biopython
 python-louvain
 networkx
 numpy
+scipy
 tqdm
