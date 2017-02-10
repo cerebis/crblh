@@ -34,24 +34,25 @@ If you are using a shared system and the system-level Python installation, you w
 
 At present, crblh has a very simple interface and can be a little tedious to start if a user is not fluent in the Unix commandline. It is expect that the sequences are translated into protein.
 
-**A basic run**
+###A Basic Run
+
 A basic run, where the initial disconnected components of the graph are assumed to be the clusters. The work directory ```work``` will be created (```-C```) and this will involve the sequences for genomes A, B and C.
 ```bash
 ./crblh.py -C work myresults A.faa B.faa C.faa
 ```
 
-**Decomposing components**
+###Decomposing Components
 You can elect to decompose the components from the beginning, or run crblh a second time. The LAST search results will be re-used.
 ```bash
 ./crblh.py --decomp work myresults_decomp A.faa B.faa C.faa
 ```
 
-**Output files**
-1. Cluster table: Each line of *myresults.txt* represents one cluster with the format "id, size, seq1, seq2, ... seqN". The sequence names are in the format "genome-seqid". The genome name is taken from the supplied file name. It is easiest if genome files does not use hyphens, as within the helper application ```cluster_breakdown.py``` the default strategy for splitting apart the genome name and sequence id is to find the first hyphen. If this is not possible, you can resort to specifying a regular expression.
+##Output files
 
-2. Graph statistics: *myresults.subgraph* contains information on each cluster from a graph perspective. The table lists cluster id, followed by graph size (number of edges), order (number of nodes/sequences) and density in the columns 1-4. Columns 5-6 simply test whether the graph for a cluster is Eulerian or biconnected, while column 7 lists the Louvain modularity for the cluster. When modularity is near 0, there is little structure suggesting a graph possesses more than a single community (no clumps). As a rule of thumb, a confident prediction of a protein cluster might be one where the graph is biconnected and with modularity=0.
+  1. Cluster table: Each line of *myresults.txt* represents one cluster with the format "id, size, seq1, seq2, ... seqN". The sequence names are in the format "genome-seqid". The genome name is taken from the supplied file name. It is easiest if genome files does not use hyphens, as within the helper application ```cluster_breakdown.py``` the default strategy for splitting apart the genome name and sequence id is to find the first hyphen. If this is not possible, you can resort to specifying a regular expression.
+  2. Graph statistics: *myresults.subgraph* contains information on each cluster from a graph perspective. The table lists cluster id, followed by graph size (number of edges), order (number of nodes/sequences) and density in the columns 1-4. Columns 5-6 simply test whether the graph for a cluster is Eulerian or biconnected, while column 7 lists the Louvain modularity for the cluster. When modularity is near 0, there is little structure suggesting a graph possesses more than a single community (no clumps). As a rule of thumb, a confident prediction of a protein cluster might be one where the graph is biconnected and with modularity=0.
 
-## Breakdown
+##Primary Result Breakdown
 
 Users can compile a set of sequences and a breakdown of sequence annotations using the tool ```cluster_breakdown.py```. By default, the tool with do this for the entire set of sequences. 
 
@@ -62,9 +63,9 @@ Users can compile a set of sequences and a breakdown of sequence annotations usi
 The result will be a directory containing 2 files for each cluster (clxx.faa, clxx.csv), containing the protein sequences belonging to the cluster and a table cataloging the various annotations given to each sequence. If the user has supplied sequences without annotation, the second file will not be of much value. If annotations were supplied, then this file is a handy means of infering function without resorting to additional searches or database lookups.
 
 In any case, the columns are: 
-1. clid
-2. fraction (%) of genes with the given annotation
-3. number of genes observed with the given annotation
-4. the annotation in question
+  1. clid
+  2. fraction (%) of genes with the given annotation
+  3. number of genes observed with the given annotation
+  4. the annotation in question
 
 
